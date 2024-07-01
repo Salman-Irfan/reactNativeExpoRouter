@@ -14,6 +14,7 @@ export default function TabLayout() {
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
         headerShown: false,
       }}>
+        {/* index */}
       <Tabs.Screen
         name="index"
         options={{
@@ -23,6 +24,7 @@ export default function TabLayout() {
           ),
         }}
       />
+      {/* explore */}
       <Tabs.Screen
         name="explore"
         options={{
@@ -32,6 +34,7 @@ export default function TabLayout() {
           ),
         }}
       />
+      {/* settings */}
       <Tabs.Screen
         name="settings/index"
         options={{
@@ -53,6 +56,9 @@ export default function TabLayout() {
             <TabBarIcon name={focused ? 'man' : 'man-outline'} color={color} />
           ),
         }}
+      />
+      <Tabs.Screen
+        name='drawerTab'
       />
     </Tabs>
   );
