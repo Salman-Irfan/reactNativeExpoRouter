@@ -41,6 +41,19 @@ export default function TabLayout() {
           ),
         }}
       />
+      {/* dynamic tab route */}
+      <Tabs.Screen
+        name='user/[id]'
+        options={{
+          href:{
+            pathname: '/user/ali', // apply
+          },
+          title: 'User',
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon name={focused ? 'man' : 'man-outline'} color={color} />
+          ),
+        }}
+      />
     </Tabs>
   );
 }

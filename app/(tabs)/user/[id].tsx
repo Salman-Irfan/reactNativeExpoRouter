@@ -1,15 +1,19 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import { useLocalSearchParams } from 'expo-router';
 
-const Details = () => {
+const User = (props:any) => {
+    const { id } = useLocalSearchParams();
+    console.log(id)
     return (
         <View style={styles.container}>
-            <Text>This is Deatils Screen</Text>
+            <Text>This is User Screen {id} </Text>
         </View>
     )
 }
 
-export default Details
+export default User
+
 
 const styles = StyleSheet.create({
     container: {

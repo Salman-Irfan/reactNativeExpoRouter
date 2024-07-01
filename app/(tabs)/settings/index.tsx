@@ -6,8 +6,18 @@ const Settings = () => {
     return (
         <View style={styles.container}>
             <Text>Settings</Text>
+            {/* details */}
             <Link href={`/details`} >
                 <Text>Go to Details</Text>
+            </Link>
+            {/* dynamic names */}
+            <Link 
+                href={{
+                    pathname: `/names/[id]`,
+                    params: {id: `salman`}
+                }}
+            >
+                <Text>Go to Names</Text>
             </Link>
         </View>
     )
