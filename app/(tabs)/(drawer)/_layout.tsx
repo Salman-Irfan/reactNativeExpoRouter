@@ -14,7 +14,15 @@ const DrawerLayout = () => {
                         title: 'role overview',
                     }}
                 />
-                
+                {/* dynamic route */}
+                <Drawer.Screen
+                    name="tasks/[id]" // This is the name of the page and must match the url from root
+                    initialParams={{ id: '123' }} // Pass your dynamic id here
+                    options={{
+                        drawerLabel: 'Tasks',
+                        title: 'overview',
+                    }}
+                />
             </Drawer>
         </GestureHandlerRootView>
     )
