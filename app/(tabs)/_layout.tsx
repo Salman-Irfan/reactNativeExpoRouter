@@ -57,8 +57,9 @@ export default function TabLayout() {
           ),
         }}
       />
+      {/* drawer tab */}
       <Tabs.Screen
-        name='drawerTab'
+        name='(drawer)'
       />
     </Tabs>
   );
