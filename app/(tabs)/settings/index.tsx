@@ -19,6 +19,8 @@ const Settings = () => {
             >
                 <Text>Go to Names</Text>
             </Link>
+            {/* open modal */}
+            <Link href={`/(stacks)/(modal)/modal`} >Open Modal</Link>
         </View>
     )
 }

@@ -48,7 +48,14 @@ export default function RootLayout() {
             }}
           />
           {/* stack.screen props options end */}
-          
+          {/* modal stack */}
+          <Stack.Screen
+            name="(stacks)/(modal)/modal"
+            options={{
+              // Set the presentation mode to modal for our modal route.
+              presentation: 'modal',
+            }}
+          />
           <Stack.Screen name="+not-found" />
         </Stack>
       </ThemeProvider>
