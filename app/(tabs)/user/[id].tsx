@@ -1,11 +1,22 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 import React from 'react';
-import { useLocalSearchParams, Redirect } from 'expo-router';
+import { useLocalSearchParams, Redirect, useRouter } from 'expo-router';
 import { useAuth } from '@/hooks/useAuth';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const User = () => {
     const { id } = useLocalSearchParams();
     const { user, loading } = useAuth();
+    const router = useRouter();
+
+    const handleLogout = async () => {
+        try {
+            await AsyncStorage.removeItem('loginFormData');
+            router.push('/auth/login');
+        } catch (e) {
+            console.error('Error clearing data', e);
+        }
+    };
 
     if (loading) {
         return (
@@ -25,6 +36,7 @@ const User = () => {
             <Text>Email: {user.email}</Text>
             <Text>Role: {user.role}</Text>
             <Text>Access Token: {user.accessToken}</Text>
+            <Button title="Logout" onPress={handleLogout} />
         </View>
     );
 };
