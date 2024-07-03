@@ -60,6 +60,22 @@ export default function TabLayout() {
       {/* drawer tab */}
       <Tabs.Screen
         name='(drawer)'
+        options={{
+          title: 'Drawer',
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon name={focused ? 'menu' : 'menu-outline'} color={color} />
+          ),
+        }}
+      />
+      {/* auth login */}
+      <Tabs.Screen
+        name='auth/login'
+        options={{
+          title: 'Login',
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon name={focused ? 'stop' : 'stop-outline'} color={color} />
+          ),
+        }}
       />
     </Tabs>
   );
