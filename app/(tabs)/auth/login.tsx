@@ -1,7 +1,10 @@
 import { StyleSheet, Text, View, TextInput, Button, Alert, useColorScheme } from 'react-native';
 import React, { useState } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useRouter } from 'expo-router';
 
 const Login = () => {
+    const router = useRouter();
     const [loginFormData, setLoginFormData] = useState({
         email: '',
         password: '',
@@ -16,6 +19,15 @@ const Login = () => {
         setLoginFormData({ ...loginFormData, [field]: value });
     };
 
+    const storeData = async (value: any) => {
+        try {
+            const jsonValue = JSON.stringify(value);
+            await AsyncStorage.setItem('loginFormData', jsonValue);
+        } catch (e) {
+            console.error('Error storing data', e);
+        }
+    };
+
     const handleUserLogin = () => {
         const userCredentials = { email: 'User@user.com', password: 'Password' };
 
@@ -26,13 +38,10 @@ const Login = () => {
             const accessToken = Math.random().toString(36).substring(2);
             const formData = { ...loginFormData, role: 'user', accessToken };
             setLoginFormData(formData);
+            storeData(formData);
             console.log(formData);
-            Alert.alert('User Login Successful', `
-                Email: ${formData.email}, 
-                Password: ${formData.password},
-                Role: ${formData.role},
-                Access Token: ${formData.accessToken}
-            `);
+            // Redirect to /user/[id] route
+            router.push(`/user/${formData.accessToken}`);
         } else {
             Alert.alert('Login Failed', 'Invalid user credentials');
         }
@@ -48,6 +57,7 @@ const Login = () => {
             const accessToken = Math.random().toString(36).substring(2);
             const formData = { ...loginFormData, role: 'admin', accessToken };
             setLoginFormData(formData);
+            storeData(formData);
             console.log(formData);
             Alert.alert('Admin Login Successful', `
                 Email: ${formData.email}, 
